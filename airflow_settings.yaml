@@ -7,11 +7,12 @@
 
 airflow:
   connections:
+    # Local DuckDB file, shared with dbt via the include/ bind mount.
+    # With host set and no token, DuckDBHook connects to this file (is_local).
+    # conn_id kept as 'motherduck_conn' so DAGs need no change (rename is a later cleanup).
     - conn_id: motherduck_conn
       conn_type: duckdb
-      conn_host: md:poke_db
-      conn_extra:
-        motherduck_token: ${motherduck_token}
+      conn_host: /usr/local/airflow/include/transforms/poke_db.duckdb
   pools:
     - pool_name:
       pool_slot:
