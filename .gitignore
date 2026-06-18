@@ -232,6 +232,8 @@ __marimo__/
 
 # Local DuckDB database files
 *.duckdb
+*.duckdb.wal
+*.duckdb.tmp/
 
 # Raw data archive (Parquet backups / landing zone — data, not code)
 include/archive/
